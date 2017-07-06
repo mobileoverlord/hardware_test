@@ -1,12 +1,21 @@
 language: erlang
+sudo: required
+dist: trusty
 
 otp_release:
     - 19.2
 
+addons:
+  apt:
+    packages:
+    - squashfs-tools
+
 env:
-    - ELIXIR_VERSION=1.4.5 MIX_TARGET=rpi0
+    - ELIXIR_VERSION=1.4.5 FWUP_VERSION=0.15.1 MIX_TARGET=rpi0
 
 before_install:
+    - wget https://github.com/fhunleth/fwup/releases/download/v$FWUP_VERSION/fwup_$FWUP_VERSION_amd64.deb;
+    - sudo dpkg -i fwup_$FWUP_VERSION_amd64.deb;
     - wget https://github.com/elixir-lang/elixir/releases/download/v$ELIXIR_VERSION/Precompiled.zip
     - unzip -d elixir Precompiled.zip
 
