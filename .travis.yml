@@ -12,10 +12,12 @@ before_install:
 
 before_script:
     - export PATH=`pwd`/elixir/bin:$PATH
+    - cat $NERVES_SSH_PRIV_KEY > ~/.ssh/id_rsa
+    - cat $NERVES_SSH_PUB_KEY > ~/.ssh/id_rsa.pub
 
 script:
     - mix local.hex --force
     - mix deps.get
     - mix compile
     - mix firmware
-    - mix firmware.push $SSH_DEST
+    - mix firmware.push $NERVES_SSH_DEST --port $NERVES_SSH_PORT

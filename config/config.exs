@@ -25,9 +25,6 @@ key_mgmt = System.get_env("NERVES_NETWORK_KEY_MGMT") ||
 ssh_pub_key =  System.get_env("NERVES_SSH_PUB_KEY") ||
                File.read!(Path.expand("~/.ssh/id_rsa.pub"))
 
-ssh_priv_key =  System.get_env("NERVES_SSH_PRIV_KEY") ||
-                File.read!(Path.expand("~/.ssh/id_rsa"))
-
 ssh_port = System.get_env("NERVES_SSH_PORT") || 8989
 
 config :bootloader,
@@ -36,7 +33,7 @@ config :bootloader,
 
 config :nerves_firmware_ssh,
   authorized_keys: [
-    ssh_key
+    ssh_pub_key
   ],
   port: ssh_port
 
