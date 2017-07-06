@@ -63,8 +63,8 @@ defmodule HardwareTest.Mixfile do
       {:bootloader, "~> 0.1"},
       {:nerves_runtime, "~> 0.4"},
       #{:nerves_firmware_ssh, github: "mobileoverlord/nerves_firmware_ssh", branch: "push"}
-      {:nerves_network, path: "../nerves_network"},
-      {:nerves_firmware_ssh, path: "../nerves_firmware_ssh"}
+      {:nerves_network, github: "nerves-project/nerves_network", branch: "default_config"},
+      {:nerves_firmware_ssh, github: "mobileoverlord/nerves_firmware_ssh", branch: "push"}
     ]
   end
 
