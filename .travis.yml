@@ -15,6 +15,7 @@ before_script:
 
 script:
     - mix local.hex --force
+    - mix archive.install https://github.com/nerves-project/archives/raw/master/nerves_bootstrap.ez --force
     - mix deps.get
     - mix compile
     - mix firmware
